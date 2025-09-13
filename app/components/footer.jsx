@@ -24,8 +24,8 @@ export default function Footer() {
       ></div>
 
       {/* Footer Content */}
-      <div className="relative z-10 container mx-auto h-full flex flex-col justify-between py-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="relative  z-10 container mx-auto h-full flex flex-col justify-between py-10">
+        <div className="grid ml-8 grid-cols-2 md:grid-cols-4 gap-8">
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-bold ">Quick Links</h3>

@@ -129,7 +129,7 @@ ${orderDetails}
       {/* Hero */}
       <section className="text-center h-[56vh] py-24 lg:py-32 px-6 bg-[url('/order.jpg')] bg-cover bg-center bg-no-repeat relative">
         <div className="bg-black/60 absolute inset-0"></div>
-        <div className="relative z-10 mt-44 max-w-3xl mx-auto">
+        <div className="relative z-10 mt-28 max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-playfair font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4500] to-[#FFD700] mb-4">
             Your Delicious Order, <span className="text-white/80">Just a Click Away!</span>
           </h1>
