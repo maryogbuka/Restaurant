@@ -1,11 +1,10 @@
-// app/admin/page.jsx - Make sure you have this at the top
+// app/admin/page.jsx
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import toast, { Toaster } from 'react-hot-toast';
 
 // Hashed version of your password (SHA-256)
-// Replace this with the new hash after generating it
 const HASHED_ADMIN_PASSWORD = 'fce98ccaf6962ed4c804ba69bb73c857e012dad71c5a3c9d430be1cf46cf8795';
 
 // Password utility functions
@@ -27,8 +26,6 @@ async function verifyPassword(password, hashedPassword) {
     return false;
   }
 }
-
-
 
 export default function AdminLogin() {
   const [password, setPassword] = useState('');
@@ -52,7 +49,10 @@ export default function AdminLogin() {
     if (lockUntil && new Date().getTime() < parseInt(lockUntil)) {
       setIsLocked(true);
       const remainingTime = Math.ceil((parseInt(lockUntil) - new Date().getTime()) / 1000 / 60);
-      toast.error(`Too many failed attempts. Try again in ${remainingTime} minutes.`);
+      toast.error(`Too many failed attempts. Try again in ${remainingTime} minutes.`, {
+        id: 'lock-message',
+        position: 'top-right'
+      });
     }
     
     // Get previous login attempts
@@ -60,7 +60,6 @@ export default function AdminLogin() {
     setLoginAttempts(attempts);
   }, [router]);
 
-  // Make sure handleLogin is declared as async
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!isClient || isLocked) return;
@@ -78,10 +77,18 @@ export default function AdminLogin() {
         
         // Store admin authentication in sessionStorage
         sessionStorage.setItem('adminAuthenticated', 'true');
-        toast.success('Login successful!');
+        
+        // Show success toast in top-right
+        toast.success('Login successful!', {
+          position: 'top-right',
+          duration: 2000,
+          icon: '✅'
+        });
+        
+        // Redirect after a short delay
         setTimeout(() => {
           router.push('/admin/dashboard');
-        }, 1000);
+        }, 1500);
       } else {
         const attempts = loginAttempts + 1;
         setLoginAttempts(attempts);
@@ -92,14 +99,22 @@ export default function AdminLogin() {
           const lockUntil = new Date().getTime() + 30 * 60 * 1000;
           localStorage.setItem('loginLockUntil', lockUntil.toString());
           setIsLocked(true);
-          toast.error('Too many failed attempts. Try again in 30 minutes.');
+          toast.error('Too many failed attempts. Try again in 30 minutes.', {
+            position: 'top-right',
+            duration: 4000
+          });
         } else {
-          toast.error(`Incorrect password. ${5 - attempts} attempts remaining.`);
+          toast.error(`Incorrect password. ${5 - attempts} attempts remaining.`, {
+            position: 'top-right',
+            duration: 3000
+          });
         }
       }
     } catch (error) {
       console.error('Login error:', error);
-      toast.error('Authentication error');
+      toast.error('Authentication error', {
+        position: 'top-right'
+      });
     } finally {
       setIsLoading(false);
     }
@@ -115,7 +130,33 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-100 flex items-center justify-center p-4">
-      <Toaster position="top-center" />
+      {/* Toast notifications positioned at top-right */}
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: '#fff',
+            color: '#333',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            borderRadius: '8px',
+            padding: '12px 20px',
+            fontWeight: '500',
+          },
+          success: {
+            iconTheme: {
+              primary: '#10B981',
+              secondary: 'white',
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: '#EF4444',
+              secondary: 'white',
+            },
+          },
+        }}
+      />
       
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
         <div className="text-center mb-8">

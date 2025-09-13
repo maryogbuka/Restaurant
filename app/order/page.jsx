@@ -17,6 +17,8 @@ export default function OrderPage() {
   });
 
   const [paystackReady, setPaystackReady] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
   const whatsappNumber = '2347026743308';
 
   // Load Paystack
@@ -35,6 +37,12 @@ export default function OrderPage() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCustomer((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Custom alert function
+  const showCustomAlert = (message) => {
+    setModalMessage(message);
+    setShowModal(true);
   };
 
   // Subtotal
@@ -57,41 +65,41 @@ export default function OrderPage() {
 
   // Handle Paystack + WhatsApp
   const handlePaystackPayment = () => {
-  if (cart.length === 0) {
-    alert('🛒 Your cart is empty.');
-    return;
-  }
+    if (cart.length === 0) {
+      showCustomAlert('🛒 Your cart is empty.');
+      return;
+    }
 
-  if (!customer.name || !customer.phone || !customer.address || !customer.location) {
-    alert('⚠️ Please fill in all your details before proceeding.');
-    return;
-  }
+    if (!customer.name || !customer.phone || !customer.address || !customer.location) {
+      showCustomAlert('⚠️ Please fill in all your details before proceeding.');
+      return;
+    }
 
-  if (typeof window === 'undefined' || !window.PaystackPop) {
-    alert('⚠️ Paystack is not loaded yet. Please wait a moment and try again.');
-    return;
-  }
+    if (typeof window === 'undefined' || !window.PaystackPop) {
+      showCustomAlert('⚠️ Paystack is not loaded yet. Please wait a moment and try again.');
+      return;
+    }
 
-  const orderDetails = cart
-    .map((item) => {
-      const cleanPrice = parsePrice(item.price);
-      const qty = item.quantity && item.quantity > 0 ? item.quantity : 1;
-      return `🍲 ${item.name} — ₦${cleanPrice.toLocaleString()} x ${qty}`;
-    })
-    .join('\n');
+    const orderDetails = cart
+      .map((item) => {
+        const cleanPrice = parsePrice(item.price);
+        const qty = item.quantity && item.quantity > 0 ? item.quantity : 1;
+        return `🍲 ${item.name} — ₦${cleanPrice.toLocaleString()} x ${qty}`;
+      })
+      .join('\n');
 
-  console.log("Paystack key from env:", process.env.NEXT_PUBLIC_PAYSTACK_KEY);
+    console.log("Paystack key from env:", process.env.NEXT_PUBLIC_PAYSTACK_KEY);
 
-  const handler = window.PaystackPop.setup({
-    key: process.env.NEXT_PUBLIC_PAYSTACK_KEY,
-    email: `${customer.phone}@restaurant.com`,
-    amount: totalAmount * 100,
-    currency: 'NGN',
-    ref: `order_${Date.now()}`,
-    callback: function (response) {
-      alert('✅ Payment successful! Ref: ' + response.reference);
+    const handler = window.PaystackPop.setup({
+      key: process.env.NEXT_PUBLIC_PAYSTACK_KEY,
+      email: `${customer.phone}@restaurant.com`,
+      amount: totalAmount * 100,
+      currency: 'NGN',
+      ref: `order_${Date.now()}`,
+      callback: function (response) {
+        showCustomAlert('✅ Payment successful! Ref: ' + response.reference);
 
-      const message = `🍴 *New Paid Order* 🍴
+        const message = `🍴 *New Paid Order* 🍴
 
 👤 *Customer Details*
 Name: ${customer.name}
@@ -106,26 +114,43 @@ ${orderDetails}
 💰 *Total:* ₦${totalAmount.toLocaleString()}
 🧾 *Payment Ref:* ${response.reference}`;
 
-      // ✅ WhatsApp redirect
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.location.href = whatsappUrl;
+        // ✅ WhatsApp redirect
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        window.location.href = whatsappUrl;
 
-      // ✅ Clear cart + reset form
-      clearCart();
-      setCustomer({ name: '', phone: '', address: '', location: '' });
-      router.push('/order');
-    },
-    onClose: function () {
-      alert('❌ Payment window closed.');
-    },
-  });
+        // ✅ Clear cart + reset form
+        clearCart();
+        setCustomer({ name: '', phone: '', address: '', location: '' });
+        router.push('/order');
+      },
+      onClose: function () {
+        showCustomAlert('❌ Payment window closed.');
+      },
+    });
 
-  handler.openIframe();
-};
-
+    handler.openIframe();
+  };
 
   return (
     <main>
+      {/* Custom Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-md w-full p-6">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">HI, MY LOVE ❤️</h3>
+              <p className="text-gray-700 mb-6">{modalMessage}</p>
+              <button
+                onClick={() => setShowModal(false)}
+                className="bg-[#FF4500] text-white px-6 py-2 rounded-full hover:bg-[#FF4500]/80"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero */}
       <section className="text-center h-[56vh] py-24 lg:py-32 px-6 bg-[url('/order.jpg')] bg-cover bg-center bg-no-repeat relative">
         <div className="bg-black/60 absolute inset-0"></div>
@@ -134,12 +159,13 @@ ${orderDetails}
             Your Delicious Order, <span className="text-white/80">Just a Click Away!</span>
           </h1>
           <p className="text-gray-200 text-lg md:text-xl max-w-3xl leading-relaxed mt-2">
-            Experience lightning-fast, secure, and hassle-free food delivery with <span className="font-semibold text-[#FF4500]">Tee Foods</span>. 
+            Experience lightning-fast, secure, and hassle-free food delivery with <span className="font-semibold text-[#FF4500]">Ozi's Foods</span>. 
             Your favorite meals are now closer than ever – fresh, hot, and delivered straight to your door.
           </p>
         </div>
       </section>
 
+      {/* Rest of your existing JSX remains exactly the same */}
       {/* Cart + Checkout */}
       <div className="bg-white py-12 min-h-[60vh]">
         <div className="max-w-3xl bg-white mx-auto p-6">
