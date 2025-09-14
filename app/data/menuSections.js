@@ -12,7 +12,7 @@ export const menuSections = [
         description:
           'Steamed white rice served with spicy tomato-based stew, flavored with peppers, onions, and your choice of protein.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
       {
         id: 2,
@@ -20,7 +20,7 @@ export const menuSections = [
         description:
           'Savory fried rice cooked with mixed vegetables, liver, and seasonings—a party classic.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
 
       {
@@ -28,7 +28,7 @@ export const menuSections = [
         name: 'Nigerian Fried Rice & Beef',
         description: 'Flavored fried rice served with tender, well-seasoned beef cuts.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
 
       {
@@ -36,14 +36,14 @@ export const menuSections = [
         name: 'Nigerian Fried Rice & Chicken',
         description: 'A hearty serving of fried rice paired with juicy, grilled or fried chicken.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
       {
         id: 5,
         name: 'Nigerian Fried Rice & Turkey',
         description: 'Spiced fried rice served with crispy or sauced-up turkey portions.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
       {
         id: 6,
@@ -57,7 +57,7 @@ export const menuSections = [
         name: 'Jollof Rice & Beef',
         description: 'Classic jollof rice served with delicious, spiced beef cuts.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
 
       {
@@ -72,14 +72,14 @@ export const menuSections = [
         name: 'Jollof Rice & Turkey',
         description: 'Rich jollof rice paired with savory turkey meat, perfect for a filling meal.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
       {
         id: 10,
         name: 'Jollof Rice & Fish',
         description: 'Delicious jollof rice complemented by perfectly fried or grilled fish.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
       {
         id: 11,
@@ -87,27 +87,27 @@ export const menuSections = [
         description:
           'Local brown rice (Ofada) served with spicy ayamase (ofada sauce) made with assorted meats and green pepper stew.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
       { id: 12,
         name: 'Coconut Rice',
         description: 'Aromatic rice cooked in creamy coconut milk with herbs, spices, and vegetables.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
       {
         id: 13,
         name: 'Coconut Rice & Beef',
         description: 'Fragrant coconut rice served with tender, flavorful beef.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
       {
         id: 14,
         name: 'Coconut Rice & Chicken',
         description: 'Tasty coconut-infused rice served with juicy chicken portions.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
 
       { 
@@ -115,14 +115,14 @@ export const menuSections = [
         name: 'Coconut Rice & Turkey',
         description: 'Creamy coconut rice paired with savory turkey meat.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
       {
         id: 16,
         name: 'Coconut Rice & Fish',
         description: 'Delicately spiced coconut rice served with well-fried or grilled fish.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/1jollof.jpg',
       },
     ],
   },
@@ -135,7 +135,7 @@ export const menuSections = [
         name: 'Eba & Stew',
         description: 'Golden garri eba served with rich tomato stew and assorted meats.',
         price: '₦3,500',
-        image: '/images/white-rice-stew.jpg',
+        image: '/afang.jpg',
       },
       {
         id: 18,
@@ -143,14 +143,14 @@ export const menuSections = [
         description:
           'Flavorful Yoruba-style spinach stew loaded with assorted meats, served with smooth semovita.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/ebaEwedu.jpg',
       },
       {
         id: 19,
         name: 'Special Efo Riro served with Eba',
         description: 'Spicy and hearty vegetable soup paired with eba for a classic combo.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/efoEba.jpg',
       },
       {
         id: 20,
@@ -158,21 +158,21 @@ export const menuSections = [
         description:
           'Thick cassava fufu paired with richly seasoned spinach stew and assorted meats.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/ebaEwedu.jpg',
       },
       {
         id: 21,
         name: 'Special Efo Riro served with Amala',
         description: 'Delicious efo riro served with soft amala—Yoruba delicacy at its best.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/efoEba.jpg',
       },
       {
         id: 22,
         name: 'Special Efo Riro served with Pounded Yam',
         description: 'Pounded yam served with thick, spicy spinach soup and meat variety.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/efoEba.jpg',
       },
       {
         id: 23,
@@ -180,7 +180,7 @@ export const menuSections = [
         description:
           'Slippery jute leaf soup (ewedu) and gbegiri combo served with amala and assorted meats.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/ebaEwedu.jpg',
       },
       {
         id: 24,
@@ -188,7 +188,7 @@ export const menuSections = [
         description:
           'Ground melon seed soup richly cooked with meats and vegetables, served with fufu.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/ebaEgusi.jpg',
       },
       {
         id: 25,
@@ -203,7 +203,7 @@ export const menuSections = [
         name: 'Special Egusi served with Semo',
         description: 'Fluffy semo paired with rich egusi soup and plenty meats.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/egusi.jpg',
       },
 
       {
@@ -212,7 +212,7 @@ export const menuSections = [
         description:
           'Draw soup filled with fresh seafood (crabs, prawns, fish), served with cassava fufu.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/fufuOkra.jpg',
       },
       
       {
@@ -220,7 +220,7 @@ export const menuSections = [
         name: 'Special Seafood Okro served with Eba',
         description: 'Okro soup loaded with seafood goodness, served with eba.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/okro.jpg',
       },
       
       {
@@ -228,7 +228,7 @@ export const menuSections = [
         name: 'Special Seafood Okro served with Pounded Yam',
         description: 'Flavorful seafood okro soup matched with pounded yam.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/okro.jpg',
       },
 
       {
@@ -237,7 +237,7 @@ export const menuSections = [
         description:
           'Traditional Efik-style vegetable soup with meat and fish, served with soft fufu.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/afang.jpg',
       },
 
       {
@@ -252,7 +252,7 @@ export const menuSections = [
         name: 'Special Afang served with Pounded Yam',
         description: 'Delicious afang soup served with pounded yam.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/garriAfang.jpg',
       },
       {
         id: 33,
@@ -266,14 +266,14 @@ export const menuSections = [
         name: 'Special Vegetable Soup served with Fufu',
         description: 'Hearty mixed vegetable soup served with soft, stretchy fufu.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/semoVegetable.avif',
       },
       {
         id: 35,
         name: 'Special Vegetable Soup served with Pounded Yam',
         description: 'Rich vegetable soup with assorted meat served with pounded yam.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/ebaEgusi.jpg',
       },
       {
         id: 36,
@@ -281,7 +281,7 @@ export const menuSections = [
         description:
           'A rich, green soup made from fresh vegetables and meats served with semo.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/vegetableSoup.jpg',
       },
       {
         id: 37,
@@ -289,7 +289,7 @@ export const menuSections = [
         description:
           'Flavorful vegetable soup paired with traditional eba for a wholesome meal.',
         price: '₦4,000',
-        image: '/vegie.jpg',
+        image: '/vegieEba.jpg',
       },
       {
         id: 38,
@@ -297,28 +297,28 @@ export const menuSections = [
         description:
           'Traditional Eastern Nigerian oha soup served with cassava fufu and assorted meats.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/oha-soup.jpg',
       },
       {
         id: 39,
         name: 'Special Oha Soup served with Semo',
         description: 'Semo and native oha soup cooked with thick broth and meats.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/ebaEgusi.jpg',
       },
       {
         id: 40,
         name: 'Special Oha Soup served with Eba',
-        description: 'Savory oha soup with eba—a perfect pairing of leaf and starch.',
+        description: 'Savory oha soup with eba, a perfect pairing of leaf and starch.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/ohaSoupGarri.jpg',
       },
       {
         id: 41,
         name: 'Special Oha Soup served with Pounded Yam',
         description: 'Delicious oha soup served with soft pounded yam.',
         price: '₦4,000',
-        image: '/images/special-asun-rice.jpg',
+        image: '/oha-soup.jpg',
       },
     ],
   },
@@ -331,21 +331,21 @@ export const menuSections = [
         name: 'Grilled Chicken',
         description: 'Juicy grilled chicken marinated in spices, served with a side of vegetables.',
         price: '₦3,500',
-        image: '/images/grilled-chicken.jpg',
+        image: '/grilledChicken.jpg',
       },
       {
         id: 43,
         name: 'Fried Plantain',
         description: 'Sweet ripe plantains fried to perfection, a perfect side dish.',
         price: '₦1,500',
-        image: '/images/fried-plantain.jpg',
+        image: '/shake.jpg',
       },
       {
         id: 44,
         name: 'Peppered Fish',
         description: 'Grilled fish coated in spicy pepper sauce, served with a side of rice.',
         price: '₦4,000',
-        image: '/images/peppered-fish.jpg',
+        image: '/grilledFish.jpg',
       },
     ],
   },
@@ -355,25 +355,60 @@ export const menuSections = [
     items: [
       {
         id: 45,
-        name: 'Grilled Chicken',
-        description: 'Juicy grilled chicken marinated in spices, served with a side of vegetables.',
+        name: 'Banana Bread',
+        description: 'Moist and delicious banana bread, perfect for breakfast or a snack.',
         price: '₦3,500',
-        image: '/images/grilled-chicken.jpg',
+        image: '/bananabread.jpg',
       },
       {
         id: 46,
-        name: 'Fried Plantain',
-        description: 'Sweet ripe plantains fried to perfection, a perfect side dish.',
+        name: 'Bread Loaf',
+        description: 'Soft and fluffy bread loaf, perfect for sandwiches or toasting.',
         price: '₦1,500',
-        image: '/images/fried-plantain.jpg',
+        image: '/breadloaf.jpg',
       },
       {
         id: 47,
-        name: 'Peppered Fish',
-        description: 'Grilled fish coated in spicy pepper sauce, served with a side of rice.',
+        name: 'Chocolate Cake',
+        description: 'Rich and moist chocolate cake, perfect for dessert lovers.',
         price: '₦4,000',
-        image: '/images/peppered-fish.jpg',
+        image: '/chococake.jpg',
       },
+ {
+        id: 48,
+        name: 'Ewa Agoyin',
+        description: 'Rich and flavorful beans, perfect for a hearty meal.',
+        price: '₦4,000',
+        image: '/ewagonyin.jpg',
+      },
+       {
+        id: 49,
+        name: 'Hamburger',
+        description: 'Juicy beef patty with fresh lettuce, tomato, and cheese in a soft bun.',
+        price: '₦4,000',
+        image: '/hamburger.jpg',
+      },
+       {
+        id: 50,
+        name: 'Pizza',
+        description: 'Delicious pizza topped with cheese, pepperoni, and fresh vegetables.',
+        price: '₦4,000',
+        image: '/pizza.jpg',
+      },
+       {
+        id: 51,
+        name: 'Spaghetti',
+        description: 'Delicious spaghetti served with a rich tomato sauce and grated cheese.',
+        price: '₦4,000',
+        image: '/panspag.jpg',
+      },
+
+
+
+
+
+
+
     ],
   },
 ];

@@ -24,12 +24,12 @@ export default function Footer() {
       ></div>
 
       {/* Footer Content */}
-      <div className="relative  z-10 container mx-auto h-full flex flex-col justify-between py-10">
-        <div className="grid ml-8 grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="relative container h-full flex flex-col justify-between py-5">
+        <div className="grid ml-3 grid-cols-1 md:grid-cols-4 mr-3">
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-bold ">Quick Links</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 mt-2 text-gray-200 text-sm">
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/menu">Menu</Link></li>
               <li><Link href="/contact">Contact Us</Link></li>
@@ -38,16 +38,16 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
-            <h3 className="text-lg font-bold">Contact</h3>
-            <p>FG3C+5CX, Alh. Yekini Olawale Bakare Ave, Lekki Penninsula II, Lekki, Lagos, Nigeria</p>
-            <p>Email: info@restaurant.com</p>
-            <p>Phone: (234) 7026-743-308</p>
+          <div className='space-y-2'>
+            <h3 className="text-lg font-bold mt-5">Contact</h3>
+            <p className='text-gray-200  text-sm'>FG3C+5CX, Alh. Yekini Olawale Bakare Ave, Lekki Penninsula II, Lekki, Lagos, Nigeria</p>
+            <p className='text-gray-200 text-sm'>Email: info@restaurant.com</p>
+            <p className='text-gray-200 text-sm'>Phone: 07026743308</p>
           </div>
 
           {/* Socials */}
           <div>
-            <h3 className="text-lg font-bold">Follow Us</h3>
+            <h3 className="text-lg font-bold mt-5">Follow Us</h3>
             <div className="flex space-x-4 mt-2 text-xl">
               <Link href="https://www.facebook.com" aria-label="Facebook"><FaFacebookF /></Link>
               <Link href="https://www.instagram.com" aria-label="Instagram"><FaInstagram /></Link>

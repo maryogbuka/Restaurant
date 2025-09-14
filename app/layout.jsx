@@ -8,6 +8,7 @@ import { CartProvider } from './context/CartContext'
 import { Doto, Caveat, Poppins } from 'next/font/google'
 import { Bitter } from 'next/font/google'
 import Script from "next/script"   
+import BrowserFix from './components/BrowserFix' // Add this import
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
         <Script src="https://js.paystack.co/v1/inline.js" strategy="beforeInteractive" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <BrowserFix /> {/* Add this line */}
         <Navbar />
         <CartProvider>{children}</CartProvider>
         <Toaster position="top-right" reverseOrder={false} />

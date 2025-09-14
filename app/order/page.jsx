@@ -152,18 +152,18 @@ ${orderDetails}
       )}
 
       {/* Hero */}
-      <section className="text-center h-[56vh] py-24 lg:py-32 px-6 bg-[url('/order.jpg')] bg-cover bg-center bg-no-repeat relative">
+      <section className="text-center h-96 py-24 lg:py-32 px-6 bg-[url('/order.jpg')] bg-cover bg-center bg-no-repeat relative">
         <div className="bg-black/60 absolute inset-0"></div>
-        <div className="relative z-10 mt-28 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-playfair font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4500] to-[#FFD700] mb-4">
+        <div className="relative mx-auto my-auto max-w-2xl">
+          <h1 className="text-2xl  sm:text-2xl lg:text-4xl md:text-4xl font-playfair font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4500] to-[#FFD700] mb-2 animate-fadeIn">
             Your Delicious Order, <span className="text-white/80">Just a Click Away!</span>
           </h1>
-          <p className="text-gray-200 text-lg md:text-xl max-w-3xl leading-relaxed mt-2">
-            Experience lightning-fast, secure, and hassle-free food delivery with <span className="font-semibold text-[#FF4500]">Ozi's Foods</span>. 
-            Your favorite meals are now closer than ever – fresh, hot, and delivered straight to your door.
+          <p className=" sm:text-xl text-sm max-w-2xl text-gray-200 leading-tight">
+            Experience lightning-fast, secure, and hassle-free food delivery with <span className="font-semibold text-[#FF4500]">Ozi's Foods</span>.
+            Your favorite meals are now closer than ever, fresh, hot, and delivered straight to your door.
           </p>
         </div>
-      </section>
+      </section> 
 
       {/* Rest of your existing JSX remains exactly the same */}
       {/* Cart + Checkout */}

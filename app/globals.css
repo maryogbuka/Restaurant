@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -44,4 +41,65 @@ body {
 .animate-marquee {
   display: flex;
   animation: marquee 20s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+
+/* ==================== */
+/* OPERA MINI FIXES - TARGETED */
+/* ==================== */
+
+/* Hide social icons on mobile for all browsers */
+@media (max-width: 768px) {
+  nav .flex.space-x-3 {
+    display: none !important;
+  }
+}
+
+/* Opera Mini specific fixes ONLY */
+.opera-mini nav {
+  background: white !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+.opera-mini section.text-center {
+  min-height: 300px !important;
+  height: auto !important;
+}
+
+.opera-mini .bg-cover {
+  background-color: #000 !important;
+  position: relative;
+}
+
+.opera-mini .text-transparent {
+  color: #FF4500 !important;
+  background: none !important;
+}
+
+.opera-mini .bg-black {
+  background: rgba(0, 0, 0, 0.6) !important;
+}
+
+.opera-mini .text-white {
+  color: white !important;
+}
+
+.opera-mini .bg-orange-600 {
+  background-color: #FF4500 !important;
+}
+
+.opera-mini img {
+  max-width: 100%;
+  height: auto;
+}
+
+.opera-mini .bg-gradient-to-br {
+  background: #f3f4f6 !important;
+}
+
+/* Only apply these backdrop fixes to Opera Mini */
+.opera-mini .backdrop-blur-md {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }

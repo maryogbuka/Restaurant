@@ -393,7 +393,7 @@ export default function MenuPage() {
           className="absolute top-0 left-0 w-full h-full object-cover"
         ></video>
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
+        <div className="absolute inset-0 flex flex-col mx-auto items-center justify-center text-center text-white">
           <h1 className="text-4xl md:text-5xl font-playfair font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4500] to-[#FFD700] mb-4 animate-fadeIn">
             Explore Our Flavorful Menu
           </h1>
@@ -429,7 +429,7 @@ export default function MenuPage() {
             <h2 className="text-2xl md:text-4xl font-playfair font-bold text-center text-gray-900 border-b-4 border-[#163c02] mx-auto pb-2 mb-8">
               {section.category}
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {section.items.map((item, i) => (
                 <div
                   key={i}
@@ -440,7 +440,7 @@ export default function MenuPage() {
                       src={item.image}
                       alt={item.name}
                       fill
-                      className="object-cover"
+                      className=""
                     />
                     {/* Favorite Button */}
                     <button
