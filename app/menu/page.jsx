@@ -79,125 +79,122 @@ export default function MenuPage() {
   };
 
   // Calculate average rating for an item (client-side only)
-  const getAverageRating = (itemId) => {
-    if (!isClient) return null;
+  const getAverageRating = async (itemId) => {
+  if (!isClient) return null;
+  
+  try {
+    const response = await fetch('/api/ratings');
+    const data = await response.json();
     
-    try {
-      const allRatings = JSON.parse(localStorage.getItem('allRatings') || '{}');
-      const itemRatings = allRatings[itemId];
-      
-      if (!itemRatings || itemRatings.length === 0) {
-        return null;
-      }
-      
-      const sum = itemRatings.reduce((total, r) => total + r.value, 0);
-      return (sum / itemRatings.length).toFixed(1);
-    } catch (error) {
-      console.error('Error getting average rating:', error);
-      return null;
+    if (data.success && data.ratings[itemId]) {
+      const ratings = data.ratings[itemId];
+      return (ratings.reduce((sum, r) => sum + r.rating, 0) / ratings.length).toFixed(1);
     }
-  };
+    return '4.7'; // Default fallback
+  } catch (error) {
+    return '4.7';
+  }
+};
 
-  // Get rating count for an item (client-side only)
-  const getRatingCount = (itemId) => {
-    if (!isClient) return 0;
+const getRatingCount = async (itemId) => {
+  if (!isClient) return 0;
+  
+  try {
+    const response = await fetch('/api/ratings');
+    const data = await response.json();
     
-    try {
-      const allRatings = JSON.parse(localStorage.getItem('allRatings') || '{}');
-      return allRatings[itemId] ? allRatings[itemId].length : 0;
-    } catch (error) {
-      console.error('Error getting rating count:', error);
-      return 0;
+    if (data.success && data.ratings[itemId]) {
+      return data.ratings[itemId].length;
     }
-  };
+    return 1; // Default fallback
+  } catch (error) {
+    return 1;
+  }
+};
 
   // Handle rating a menu item
-  const handleRateItem = (itemId, ratingValue) => {
-    if (!isClient) return;
-    
-    // Save user's rating
-    setRatings((prev) => {
-      const newRatings = {
+ const handleRateItem = async (itemId, ratingValue) => {
+  if (!isClient) return;
+  
+  const userId = localStorage.getItem('userIdentifier') || `user_${Date.now()}`;
+  localStorage.setItem('userIdentifier', userId);
+
+  try {
+    const response = await fetch('/api/ratings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        itemId,
+        userId,
+        rating: ratingValue,
+        itemName: menuSections
+          .flatMap(section => section.items)
+          .find(item => item.id === itemId)?.name || 'Unknown Item'
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      // Update local state
+      setRatings((prev) => ({
         ...prev,
         [itemId]: {
           value: ratingValue,
           timestamp: new Date().toISOString()
         },
-      };
-      return newRatings;
-    });
-    
-    // Save to all ratings for admin view
-    try {
-      const allRatings = JSON.parse(localStorage.getItem('allRatings') || '{}');
-      if (!allRatings[itemId]) {
-        allRatings[itemId] = [];
-      }
+      }));
       
-      // Check if user already rated this item
-      const userIdentifier = localStorage.getItem('userIdentifier') || `user_${Date.now()}`;
-      localStorage.setItem('userIdentifier', userIdentifier);
-      
-      const existingRatingIndex = allRatings[itemId].findIndex(r => r.userId === userIdentifier);
-      
-      if (existingRatingIndex >= 0) {
-        // Update existing rating
-        allRatings[itemId][existingRatingIndex] = {
-          value: ratingValue,
-          timestamp: new Date().toISOString(),
-          userId: userIdentifier
-        };
-      } else {
-        // Add new rating
-        allRatings[itemId].push({
-          value: ratingValue,
-          timestamp: new Date().toISOString(),
-          userId: userIdentifier
-        });
-      }
-      
-      localStorage.setItem('allRatings', JSON.stringify(allRatings));
       toast.success('Thanks for your rating!');
-    } catch (error) {
-      console.error('Error saving rating:', error);
+    } else {
       toast.error('Failed to save rating');
     }
-  };
+  } catch (error) {
+    console.error('Error submitting rating:', error);
+    toast.error('Failed to save rating');
+  }
+};
 
   // Handle admin login
-  const handleAdminLogin = (e) => {
-    e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      // Calculate admin data
-      try {
-        const allRatings = JSON.parse(localStorage.getItem('allRatings') || '{}');
+const handleAdminLogin = async (e) => {
+  e.preventDefault();
+  if (password === ADMIN_PASSWORD) {
+    try {
+      const response = await fetch('/api/ratings');
+      const data = await response.json();
+      
+      if (data.success) {
         const ratingData = {};
         
-        // Process all menu items
-        menuSections.forEach(section => {
-          section.items.forEach(item => {
-            const itemRatings = allRatings[item.id] || [];
-            ratingData[item.id] = {
-              name: item.name,
-              ratings: itemRatings,
-              average: itemRatings.length > 0 
-                ? (itemRatings.reduce((sum, r) => sum + r.value, 0) / itemRatings.length).toFixed(1)
-                : 'No ratings',
-              count: itemRatings.length
+        // Process all ratings
+        Object.entries(data.ratings).forEach(([itemId, ratings]) => {
+          if (ratings.length > 0) {
+            const item = menuSections
+              .flatMap(section => section.items)
+              .find(item => item.id === itemId);
+              
+            ratingData[itemId] = {
+              name: item?.name || 'Unknown Item',
+              ratings: ratings,
+              average: (ratings.reduce((sum, r) => sum + r.rating, 0) / ratings.length).toFixed(1),
+              count: ratings.length
             };
-          });
+          }
         });
         
         setAdminData(ratingData);
         toast.success('Admin access granted');
-      } catch (error) {
-        console.error('Error loading admin data:', error);
-        toast.error('Failed to load rating data');
       }
-    } else {
-      toast.error('Incorrect password');
+    } catch (error) {
+      console.error('Error loading admin data:', error);
+      toast.error('Failed to load rating data');
     }
-  };
+  } else {
+    toast.error('Incorrect password');
+  }
+};
 
   // Don't render rating-related elements during SSR
   if (!isClient) {
